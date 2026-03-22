@@ -1331,6 +1331,7 @@ function init() {
     initGuessNav();
     loadGuess(0);
     generateDrill();
+          initFuelsSection();
 
     console.log('%c⚗️ OrgChem 6092 loaded!', 'font-size:14px;font-weight:bold;color:#4fd1c5;');
     console.log('%cKeys 1-8: jump sections | T: top | Enter in drill: check/next', 'font-size:11px;color:#a0aec0;');
@@ -1338,3 +1339,77 @@ function init() {
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
 else init();
+
+// ══════════════════════════════════════
+// 27. FUELS & SUSTAINABILITY
+// ══════════════════════════════════════
+
+function toggleEthMethod(method) {
+    const body = $(`#eth-body-${method}`);
+    const toggle = $(`#eth-toggle-${method}`);
+    if (!body || !toggle) return;
+
+    const isOpen = body.style.display !== 'none';
+    body.style.display = isOpen ? 'none' : 'block';
+    toggle.textContent = isOpen ? '+' : '×';
+    toggle.classList.toggle('open', !isOpen);
+}
+
+// Fuels quiz data
+const fuelsQuizData = [
+    { q: 'Why are fossil fuels considered non-renewable?', opts: ['They are expensive', 'They take millions of years to form', 'They produce CO₂', 'They are found underground'], ans: 1 },
+    { q: 'Bioethanol is produced from sugarcane by:', opts: ['Fractional distillation', 'Cracking', 'Fermentation using yeast', 'Hydration of ethene'], ans: 2 },
+    { q: 'Why is bioethanol considered approximately carbon neutral?', opts: ['It does not produce CO₂ when burned', 'CO₂ absorbed by crops during growth offsets CO₂ released on burning', 'It is made from crude oil', 'It produces less heat than petrol'], ans: 1 },
+    { q: 'Which is a disadvantage of biofuels?', opts: ['They are non-renewable', 'They produce more CO₂ than petrol', 'Land is used for fuel crops instead of food', 'They cannot be burned in engines'], ans: 2 },
+    { q: 'In fermentation, glucose is converted to ethanol using:', opts: ['Phosphoric acid at 300 °C', 'Yeast at ~37 °C', 'Nickel catalyst at 150 °C', 'UV light'], ans: 1 },
+    { q: 'Fossil fuels contribute to global warming because:', opts: ['They are renewable', 'They release CO₂ that was locked underground for millions of years', 'They are carbon neutral', 'They absorb CO₂ from the atmosphere'], ans: 1 }
+];
+
+function initFuelsSection() {
+    // Build quiz
+    const container = $('#quiz-fuels');
+    if (container) {
+        quizState.fuels = { total: fuelsQuizData.length, answered: 0, correct: 0 };
+        container.innerHTML = '';
+        fuelsQuizData.forEach((item, qi) => {
+            const qEl = makeEl('div', { cls: 'quiz-question' });
+            qEl.innerHTML = `
+                <p class="q-text">${qi + 1}. ${item.q}</p>
+                <div class="q-options">${item.opts.map((o, oi) =>
+                    `<button class="q-option" data-idx="${oi}">${o}</button>`
+                ).join('')}</div>
+                <div class="q-feedback"></div>
+            `;
+            container.appendChild(qEl);
+            $$('.q-option', qEl).forEach(btn => {
+                btn.addEventListener('click', () => handleAnswer(btn, qEl, item.ans, 'fuels'));
+            });
+        });
+    }
+
+    // Add fuels questions to final quiz pool
+    const extraFinal = [
+        { q: 'Bioethanol from sugarcane is considered more sustainable because:', opts: ['It is cheaper', 'CO₂ absorbed during crop growth offsets CO₂ from burning', 'It has higher energy density', 'It produces no CO₂'], ans: 1, topic: 'Fuels' },
+        { q: 'The fermentation of glucose requires:', opts: ['UV light and chlorine', 'Yeast at ~37 °C, no oxygen', 'Ni catalyst at 150 °C', 'Phosphoric acid at 300 °C'], ans: 1, topic: 'Fuels' },
+        { q: 'Fossil fuels are non-renewable because they:', opts: ['Are too expensive to extract', 'Take millions of years to form', 'Produce toxic gases', 'Are only found in tropical countries'], ans: 1, topic: 'Fuels' },
+        { q: 'During photosynthesis, sugarcane plants:', opts: ['Release CO₂ into the atmosphere', 'Absorb CO₂ from the atmosphere', 'Produce ethanol directly', 'Break down fossil fuels'], ans: 1, topic: 'Fuels' }
+    ];
+
+    extraFinal.forEach(q => {
+        if (!finalPool.some(e => e.q === q.q)) finalPool.push(q);
+    });
+}
+
+// Update keyboard shortcuts to include fuels section
+// Find in the existing keydown handler, the map object should be updated.
+// Since we can't modify inline, we add a second listener:
+document.addEventListener('keydown', e => {
+    if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return;
+    // 'f' key jumps to fuels
+    if (e.key === 'f' || e.key === 'F') {
+        if (!e.ctrlKey && !e.metaKey) {
+            e.preventDefault();
+            scrollToSection('fuels');
+        }
+    }
+});
