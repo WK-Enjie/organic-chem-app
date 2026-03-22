@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Level Chemistry 6092 – Organic Chemistry</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav id="topbar">
+    <div class="topbar-brand" onclick="scrollToSection('home')">
+        <span class="brand-icon">⚗️</span>
+        <span class="brand-text">OrgChem <span class="brand-highlight">6092</span></span>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+        <li><a href="#intro" class="nav-link" data-section="intro">Introduction</a></li>
+        <li><a href="#alkanes" class="nav-link" data-section="alkanes">Alkanes</a></li>
+        <li><a href="#alkenes" class="nav-link" data-section="alkenes">Alkenes</a></li>
+        <li><a href="#alcohols" class="nav-link" data-section="alcohols">Alcohols</a></li>
+        <li><a href="#carboxylic-acids" class="nav-link" data-section="carboxylic-acids">Acids &amp; Esters</a></li>
+        <li><a href="#polymers" class="nav-link" data-section="polymers">Polymers</a></li>
+        <li><a href="#reaction-map" class="nav-link" data-section="reaction-map">Summary</a></li>
+    </ul>
+    <div class="progress-bar" id="progressBar"></div>
+</nav>
+
+<main>
+
+<!-- ══════════ HOME ══════════ -->
+<section id="home" class="section hero-section">
+    <div class="hero-content">
+        <h1 class="hero-title">Organic Chemistry</h1>
+        <p class="hero-subtitle">GCE O Level Chemistry 6092 · Section III</p>
+        <p class="hero-desc">Interactive learning covering hydrocarbons, alcohols, carboxylic acids, esters and polymers — with visualisations, animated reactions and instant-feedback quizzes.</p>
+        <div class="hero-cards">
+            <div class="hero-card" onclick="scrollToSection('alkanes')"><div class="hero-card-icon">🛢️</div><h3>Alkanes</h3><p>C<sub>n</sub>H<sub>2n+2</sub></p></div>
+            <div class="hero-card" onclick="scrollToSection('alkenes')"><div class="hero-card-icon">⚡</div><h3>Alkenes</h3><p>C<sub>n</sub>H<sub>2n</sub></p></div>
+            <div class="hero-card" onclick="scrollToSection('alcohols')"><div class="hero-card-icon">🧪</div><h3>Alcohols</h3><p>–OH group</p></div>
+            <div class="hero-card" onclick="scrollToSection('carboxylic-acids')"><div class="hero-card-icon">🍋</div><h3>Acids</h3><p>–COOH group</p></div>
+            <div class="hero-card" onclick="scrollToSection('polymers')"><div class="hero-card-icon">🔗</div><h3>Polymers</h3><p>Addition &amp; Condensation</p></div>
+        </div>
+        <button class="btn-primary" onclick="scrollToSection('intro')">Start Learning →</button>
+    </div>
+    <div class="hero-bg-molecules" id="heroBg"></div>
+</section>
+
+<!-- ══════════ INTRODUCTION ══════════ -->
+<section id="intro" class="section content-section">
+    <div class="section-header">
+        <span class="section-number">01</span>
+        <h2>Introduction to Organic Chemistry</h2>
+        <p class="section-lead">Foundations — what makes carbon special and how we classify organic compounds.</p>
+    </div>
+    <div class="content-grid">
+        <div class="content-card full-width">
+            <h3>What is Organic Chemistry?</h3>
+            <p>Organic chemistry is the study of carbon-containing compounds. Carbon is unique because it forms <strong>four covalent bonds</strong> and can bond to other carbon atoms to make chains, branches and rings.</p>
+            <div class="key-point"><span class="key-icon">💡</span><p><strong>Key idea:</strong> Carbon compounds are everywhere — fuels (methane, petrol), materials (plastics), food (ethanol, vinegar).</p></div>
+        </div>
+        <div class="content-card">
+            <h3>🛢️ Crude Oil &amp; Fuels</h3>
+            <ul>
+                <li><strong>Crude oil</strong> is a mixture of hydrocarbons separated by <em>fractional distillation</em>.</li>
+                <li>Fractions have competing uses: <strong>fuels</strong> and <strong>chemical feedstock</strong>.</li>
+                <li>Natural gas (mainly <strong>methane</strong>) and crude oil are <strong>non-renewable</strong>.</li>
+                <li><strong>Biofuels</strong> (e.g. bioethanol from sugarcane) are renewable — more sustainable in terms of CO₂ emissions.</li>
+            </ul>
+        </div>
+        <div class="content-card">
+            <h3>📋 Homologous Series</h3>
+            <p>A <strong>homologous series</strong> is a family of compounds with:</p>
+            <ul>
+                <li>The same <strong>general formula</strong></li>
+                <li>Similar <strong>chemical properties</strong></li>
+                <li>A <strong>gradation in physical properties</strong></li>
+                <li>Each member differs by <strong>–CH₂–</strong></li>
+                <li>The same <strong>functional group</strong></li>
+            </ul>
+        </div>
+        <div class="content-card full-width">
+            <h3>Functional Groups at a Glance</h3>
+            <div class="table-responsive"><table class="styled-table"><thead><tr><th>Series</th><th>General Formula</th><th>Functional Group</th><th>Example</th><th>Saturated?</th></tr></thead><tbody>
+                <tr><td>Alkane</td><td>C<sub>n</sub>H<sub>2n+2</sub></td><td>None (C–C &amp; C–H)</td><td>CH₄ methane</td><td><span class="badge badge-green">Yes</span></td></tr>
+                <tr><td>Alkene</td><td>C<sub>n</sub>H<sub>2n</sub></td><td>C=C double bond</td><td>C₂H₄ ethene</td><td><span class="badge badge-red">No</span></td></tr>
+                <tr><td>Alcohol</td><td>C<sub>n</sub>H<sub>2n+1</sub>OH</td><td>–OH hydroxyl</td><td>C₂H₅OH ethanol</td><td><span class="badge badge-green">Yes</span></td></tr>
+                <tr><td>Carboxylic Acid</td><td>C<sub>n</sub>H<sub>2n+1</sub>COOH</td><td>–COOH carboxyl</td><td>CH₃COOH ethanoic acid</td><td><span class="badge badge-green">Yes</span></td></tr>
+            </tbody></table></div>
+        </div>
+        <div class="content-card">
+            <h3>🔀 Isomerism</h3>
+            <p><strong>Isomers</strong> have the <strong>same molecular formula</strong> but <strong>different structural formulae</strong>.</p>
+            <div class="example-box"><p><strong>Example:</strong> C₄H₁₀ → butane (straight) or methylpropane (branched).</p></div>
+        </div>
+        <div class="content-card">
+            <h3>🔬 Saturated vs Unsaturated</h3>
+            <p><strong>Saturated:</strong> Only C–C single bonds (alkanes).</p>
+            <p><strong>Unsaturated:</strong> Contains C=C double bond (alkenes).</p>
+            <div class="key-point"><span class="key-icon">🧪</span><p><strong>Test:</strong> Aqueous bromine (brown) — <strong>decolourises</strong> with unsaturated, stays brown with saturated.</p></div>
+        </div>
+
+        <!-- Fractional Distillation Tower -->
+        <div class="content-card full-width">
+            <h3>🏭 Fractional Distillation of Crude Oil</h3>
+            <p>Crude oil is heated and separated in a fractionating column. Click on a fraction to learn more.</p>
+            <div class="distillation-wrapper">
+                <div class="distillation-tower" id="distill-tower"></div>
+                <div class="distillation-info">
+                    <div class="fraction-detail-card" id="fraction-detail">
+                        <h4 id="fraction-title">👆 Click a fraction</h4>
+                        <p id="fraction-desc" style="color:var(--text-muted);font-size:0.9rem;">Each fraction contains hydrocarbons with similar boiling points.</p>
+                        <dl class="fraction-props" id="fraction-props" style="display:none;">
+                            <dt>Boiling range</dt><dd id="fp-bp">—</dd>
+                            <dt>Carbon atoms</dt><dd id="fp-carbons">—</dd>
+                            <dt>State</dt><dd id="fp-state">—</dd>
+                            <dt>Uses</dt><dd id="fp-uses">—</dd>
+                            <dt>Viscosity</dt><dd id="fp-viscosity">—</dd>
+                            <dt>Flammability</dt><dd id="fp-flammability">—</dd>
+                        </dl>
+                    </div>
+                    <div class="key-point"><span class="key-icon">📈</span><p>Going <strong>down</strong> the column: molecules get larger → b.p. ↑, viscosity ↑, flammability ↓, colour darker.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- INTRO QUIZ -->
+    <div class="quiz-container" data-quiz-id="intro">
+        <h3>🎯 Quick Check — Introduction</h3>
+        <div class="quiz-questions" id="quiz-intro"></div>
+        <div class="quiz-score" id="score-intro"></div>
+    </div>
+</section>
+
+<!-- ══════════ ALKANES ══════════ -->
+<section id="alkanes" class="section content-section">
+    <div class="section-header">
+        <span class="section-number">02</span>
+        <h2>Alkanes</h2>
+        <p class="section-lead">Saturated hydrocarbons — general formula C<sub>n</sub>H<sub>2n+2</sub></p>
+    </div>
+    <div class="content-grid">
+        <div class="content-card full-width">
+            <h3>First Four Alkanes</h3>
+            <div class="molecule-gallery" id="alkane-gallery"></div>
+        </div>
+        <div class="content-card full-width">
+            <h3>Physical Properties Trend</h3>
+            <div class="table-responsive"><table class="styled-table"><thead><tr><th>Name</th><th>Formula</th><th>M<sub>r</sub></th><th>State</th><th>B.P. (°C)</th></tr></thead><tbody>
+                <tr><td>Methane</td><td>CH₄</td><td>16</td><td>Gas</td><td>−162</td></tr>
+                <tr><td>Ethane</td><td>C₂H₆</td><td>30</td><td>Gas</td><td>−89</td></tr>
+                <tr><td>Propane</td><td>C₃H₈</td><td>44</td><td>Gas</td><td>−42</td></tr>
+                <tr><td>Butane</td><td>C₄H₁₀</td><td>58</td><td>Gas</td><td>−1</td></tr>
+                <tr><td>Pentane</td><td>C₅H₁₂</td><td>72</td><td>Liquid</td><td>36</td></tr>
+            </tbody></table></div>
+            <div class="key-point"><span class="key-icon">📈</span><p>Larger molecules → stronger intermolecular forces → higher b.p., more viscous.</p></div>
+        </div>
+        <div class="content-card full-width">
+            <h3>📊 Boiling Point Chart</h3>
+            <div class="chart-container" id="alkane-bp-chart"></div>
+        </div>
+        <div class="content-card">
+            <h3>🔥 Combustion</h3>
+            <div class="reaction-box"><div class="reaction-equation"><span class="reactant">CH₄</span><span class="plus">+</span><span class="reactant">2O₂</span><span class="arrow">→</span><span class="product">CO₂</span><span class="plus">+</span><span class="product">2H₂O</span></div><p class="reaction-note">Complete combustion: exothermic, produces CO₂ + H₂O.</p></div>
+            <div class="reaction-box"><div class="reaction-equation"><span class="reactant">2CH₄</span><span class="plus">+</span><span class="reactant">3O₂</span><span class="arrow">→</span><span class="product">2CO</span><span class="plus">+</span><span class="product">4H₂O</span></div><p class="reaction-note">Incomplete combustion: limited O₂ → toxic CO and/or soot.</p></div>
+        </div>
+        <div class="content-card">
+            <h3>☀️ Substitution with Chlorine</h3>
+            <div class="reaction-box"><div class="reaction-equation"><span class="reactant">CH₄</span><span class="plus">+</span><span class="reactant">Cl₂</span><span class="arrow">→<br><small class="condition">UV light</small></span><span class="product">CH₃Cl</span><span class="plus">+</span><span class="product">HCl</span></div><p class="reaction-note">A hydrogen is replaced by chlorine. Requires UV light.</p></div>
+            <div class="key-point"><span class="key-icon">⚠️</span><p>Alkanes are generally <strong>unreactive</strong> — only strong C–C and C–H bonds, no functional group.</p></div>
+        </div>
+        <div class="content-card full-width">
+            <h3>🔀 Isomers of Butane (C₄H₁₀)</h3>
+            <div class="isomer-toggle">
+                <button class="isomer-btn active" onclick="showIsomer('butane')">Butane (straight)</button>
+                <button class="isomer-btn" onclick="showIsomer('methylpropane')">Methylpropane (branched)</button>
+            </div>
+            <div class="isomer-display" id="isomer-display">
+                <svg viewBox="0 0 400 200" class="isomer-svg" id="isomer-svg"></svg>
+                <p class="isomer-caption" id="isomer-caption"></p>
+            </div>
+        </div>
+    </div>
+    <div class="quiz-container" data-quiz-id="alkanes">
+        <h3>🎯 Quick Check — Alkanes</h3>
+        <div class="quiz-questions" id="quiz-alkanes"></div>
+        <div class="quiz-score" id="score-alkanes"></div>
+    </div>
+</section>
+
+<!-- ══════════ ALKENES ══════════ -->
+<section id="alkenes" class="section content-section">
+    <div class="section-header">
+        <span class="section-number">03</span>
+        <h2>Alkenes</h2>
+        <p class="section-lead">Unsaturated hydrocarbons — C<sub>n</sub>H<sub>2n</sub> — containing a C=C double bond</p>
+    </div>
+    <div class="content-grid">
+        <div class="content-card full-width">
+            <h3>First Three Alkenes</h3>
+            <div class="molecule-gallery" id="alkene-gallery"></div>
+        </div>
+        <div class="content-card">
+            <h3>🔨 Cracking</h3>
+            <p>Large alkanes → smaller, more useful <strong>alkenes</strong> + alkanes.</p>
+            <div class="reaction-box"><div class="reaction-equation"><span class="reactant">C₁₀H₂₂</span><span class="arrow">→<br><small class="condition">high temp</small></span><span class="product">C₂H₄</span><span class="plus">+</span><span class="product">C₈H₁₈</span></div></div>
+        </div>
+        <div class="content-card">
+            <h3>🧈 Making Margarine</h3>
+            <p>Unsaturated vegetable oils + <strong>H₂</strong> (Ni catalyst) → saturated fats (solid margarine).</p>
+            <p><strong>Polyunsaturated</strong> = contains many C=C double bonds.</p>
+        </div>
+        <div class="content-card full-width">
+            <h3>⚡ Addition Reactions of Ethene</h3>
+            <p>Select a reaction:</p>
+            <div class="reaction-selector" id="alkene-rxn-selector">
+                <button class="rxn-btn active" data-rxn="bromine">+ Bromine</button>
+                <button class="rxn-btn" data-rxn="steam">+ Steam</button>
+                <button class="rxn-btn" data-rxn="hydrogen">+ Hydrogen</button>
+                <button class="rxn-btn" data-rxn="polymerisation">Polymerisation</button>
+            </div>
+            <div class="reaction-display" id="alkene-rxn-display">
+                <div class="reaction-equation" id="alkene-rxn-eq"></div>
+                <p id="alkene-rxn-desc"></p>
+                <p class="reaction-conditions" id="alkene-rxn-cond"></p>
+            </div>
+        </div>
+        <div class="content-card full-width">
+            <h3>🟤→⚪ Bromine Water Test</h3>
+            <div class="bromine-test">
+                <div class="test-tubes-row">
+                    <div class="test-tube-setup"><div class="test-tube" id="tube-alkane"><div class="tube-liquid" style="background:rgba(200,200,220,0.2);">Alkane</div><div class="tube-reagent" id="reagent-alkane"></div></div><p>Hexane</p></div>
+                    <div class="test-tube-setup"><div class="test-tube" id="tube-alkene"><div class="tube-liquid" style="background:rgba(200,200,220,0.2);">Alkene</div><div class="tube-reagent" id="reagent-alkene"></div></div><p>Hexene</p></div>
+                </div>
+                <button class="btn-primary" id="btn-bromine" onclick="runBromineTest()">Add Aqueous Bromine 🧪</button>
+                <p class="test-result" id="bromine-result"></p>
+            </div>
+        </div>
+    </div>
+    <div class="quiz-container" data-quiz-id="alkenes">
+        <h3>🎯 Quick Check — Alkenes</h3>
+        <div class="quiz-questions" id="quiz-alkenes"></div>
+        <div class="quiz-score" id="score-alkenes"></div>
+    </div>
+</section>
+
+<!-- ══════════ ALCOHOLS ══════════ -->
+<section id="alcohols" class="section content-section">
+    <div class="section-header">
+        <span class="section-number">04</span>
+        <h2>Alcohols</h2>
+        <p class="section-lead">Containing the hydroxyl functional group –OH</p>
+    </div>
+    <div class="content-grid">
+        <div class="content-card full-width">
+            <h3>First Four Alcohols</h3>
+            <div class="molecule-gallery" id="alcohol-gallery"></div>
+        </div>
+        <div class="content-card">
+            <h3>🏭 Making Ethanol</h3>
+            <div class="method-tabs">
+                <button class="method-tab active" onclick="showMethod('hydration')">Hydration of Ethene</button>
+                <button class="method-tab" onclick="showMethod('fermentation')">Fermentation</button>
+            </div>
+            <div id="method-hydration" class="method-content">
+                <div class="reaction-box"><div class="reaction-equation"><span class="reactant">C₂H₄</span><span class="plus">+</span><span class="reactant">H₂O</span><span class="arrow">→<br><small class="condition">catalyst, high T&P</small></span><span class="product">C₂H₅OH</span></div></div>
+                <ul><li>Addition of steam to ethene</li><li>Phosphoric acid catalyst, high temp &amp; pressure</li><li>Uses ethene from crude oil (non-renewable)</li></ul>
+            </div>
+            <div id="method-fermentation" class="method-content" style="display:none;">
+                <div class="reaction-box"><div class="reaction-equation"><span class="reactant">C₆H₁₂O₆</span><span class="arrow">→<br><small class="condition">yeast, ~37°C</small></span><span class="product">2C₂H₅OH</span><span class="plus">+</span><span class="product">2CO₂</span></div></div>
+                <ul><li>Glucose → ethanol + CO₂</li><li>Yeast (enzyme), ~37°C, no oxygen</li><li>Renewable source (sugarcane / crops)</li></ul>
+            </div>
+        </div>
+        <div class="content-card">
+            <h3>🔥 Reactions of Alcohols</h3>
+            <div class="reaction-box"><h4>Combustion</h4><div class="reaction-equation"><span class="reactant">C₂H₅OH</span><span class="plus">+</span><span class="reactant">3O₂</span><span class="arrow">→</span><span class="product">2CO₂</span><span class="plus">+</span><span class="product">3H₂O</span></div></div>
+            <div class="reaction-box"><h4>Oxidation → Carboxylic Acid</h4><div class="reaction-equation"><span class="reactant">Ethanol</span><span class="arrow">→<br><small class="condition">KMnO₄ or air [O]</small></span><span class="product">Ethanoic acid</span></div><p class="reaction-note">KMnO₄: purple → colourless. Air: wine → vinegar (slow).</p></div>
+            <div class="key-point"><span class="key-icon">🔗</span><p>Chain: <strong>Ethene → Ethanol → Ethanoic acid</strong></p></div>
+        </div>
+    </div>
+    <div class="quiz-container" data-quiz-id="alcohols">
+        <h3>🎯 Quick Check — Alcohols</h3>
+        <div class="quiz-questions" id="quiz-alcohols"></div>
+        <div class="quiz-score" id="score-alcohols"></div>
+    </div>
+</section>
+
+<!-- ══════════ CARBOXYLIC ACIDS & ESTERS ══════════ -->
+<section id="carboxylic-acids" class="section content-section">
+    <div class="section-header">
+        <span class="section-number">05</span>
+        <h2>Carboxylic Acids &amp; Esters</h2>
+        <p class="section-lead">Containing the carboxyl functional group –COOH</p>
+    </div>
+    <div class="content-grid">
+        <div class="content-card full-width">
+            <h3>First Four Carboxylic Acids</h3>
+            <div class="table-responsive"><table class="styled-table"><thead><tr><th>Name</th><th>Formula</th><th>Structural</th><th>Found in</th></tr></thead><tbody>
+                <tr><td>Methanoic acid</td><td>HCOOH</td><td>H–COOH</td><td>Ant stings</td></tr>
+                <tr><td>Ethanoic acid</td><td>CH₃COOH</td><td>CH₃–COOH</td><td>Vinegar</td></tr>
+                <tr><td>Propanoic acid</td><td>C₂H₅COOH</td><td>CH₃CH₂–COOH</td><td>—</td></tr>
+                <tr><td>Butanoic acid</td><td>C₃H₇COOH</td><td>CH₃CH₂CH₂–COOH</td><td>Rancid butter</td></tr>
+            </tbody></table></div>
+        </div>
+
+        <div class="content-card">
+            <h3>🧪 Weak Acid Properties</h3>
+            <p>Carboxylic acids are <strong>weak acids</strong> — only partially ionise in water.</p>
+            <div class="reaction-box"><p>CH₃COOH ⇌ CH₃COO⁻ + H⁺</p></div>
+            <p>Typical acid reactions:</p>
+            <ul>
+                <li><strong>+ Metal</strong> → salt + hydrogen ↑</li>
+                <li><strong>+ Base</strong> → salt + water</li>
+                <li><strong>+ Carbonate</strong> → salt + water + CO₂ ↑</li>
+            </ul>
+        </div>
+
+        <div class="content-card">
+            <h3>🧮 Acid Reactions</h3>
+            <p>Select a reactant with ethanoic acid:</p>
+            <div class="reaction-selector" id="acid-rxn-selector">
+                <button class="rxn-btn active" data-rxn="metal">+ Magnesium</button>
+                <button class="rxn-btn" data-rxn="carbonate">+ Na₂CO₃</button>
+                <button class="rxn-btn" data-rxn="base">+ NaOH</button>
+            </div>
+            <div class="reaction-display" id="acid-rxn-display">
+                <div class="reaction-equation" id="acid-rxn-eq"></div>
+                <p id="acid-rxn-obs"></p>
+            </div>
+        </div>
+
+        <div class="content-card full-width">
+            <h3>🌸 Esters — Esterification</h3>
+            <p><strong>Carboxylic acid + alcohol → ester + water</strong> (with acid catalyst, reversible)</p>
+            <div class="reaction-box"><div class="reaction-equation">
+                <span class="reactant">CH₃COOH</span><span class="plus">+</span><span class="reactant">C₂H₅OH</span>
+                <span class="arrow">⇌<br><small class="condition">H⁺ catalyst</small></span>
+                <span class="product">CH₃COOC₂H₅</span><span class="plus">+</span><span class="product">H₂O</span>
+            </div><p class="reaction-note">Product: <strong>ethyl ethanoate</strong> — a sweet-smelling ester.</p></div>
+
+            <h4>Ester Builder</h4>
+            <p>Select an acid and an alcohol:</p>
+            <div class="ester-builder">
+                <div class="ester-select">
+                    <label>Acid:</label>
+                    <select id="ester-acid">
+                        <option value="methanoic">Methanoic acid</option>
+                        <option value="ethanoic" selected>Ethanoic acid</option>
+                        <option value="propanoic">Propanoic acid</option>
+                        <option value="butanoic">Butanoic acid</option>
+                    </select>
+                </div>
+                <div class="ester-select">
+                    <label>Alcohol:</label>
+                    <select id="ester-alcohol">
+                        <option value="methanol">Methanol</option>
+                        <option value="ethanol" selected>Ethanol</option>
+                        <option value="propanol">Propan-1-ol</option>
+                        <option value="butanol">Butan-1-ol</option>
+                    </select>
+                </div>
+                <button class="btn-primary" onclick="buildEster()">Build Ester →</button>
+            </div>
+            <div class="ester-result" id="ester-result"></div>
+        </div>
+
+        <!-- Ester Naming Drill -->
+        <div class="content-card full-width">
+            <h3>🎮 Ester Naming Drill</h3>
+            <p>Name the ester from the acid + alcohol. Type your answer and press Enter or Check!</p>
+            <div class="drill-container" id="ester-drill">
+                <div class="drill-question-area">
+                    <p class="drill-prompt">Name the ester formed from:</p>
+                    <div class="drill-compounds">
+                        <div class="drill-compound acid"><div class="compound-type">Acid</div><div class="compound-name" id="drill-acid-name">—</div></div>
+                        <div style="font-size:1.5rem;color:var(--text-muted);">+</div>
+                        <div class="drill-compound alcohol"><div class="compound-type">Alcohol</div><div class="compound-name" id="drill-alcohol-name">—</div></div>
+                    </div>
+                    <div class="drill-input-area">
+                        <input type="text" class="drill-input" id="drill-answer" placeholder="Type ester name…" autocomplete="off" spellcheck="false">
+                        <button class="btn-primary" onclick="checkEsterDrill()">Check ✓</button>
+                    </div>
+                    <div class="drill-feedback" id="drill-feedback"></div>
+                </div>
+                <div class="drill-score-bar">
+                    <div class="drill-streak"><span class="streak-fire">🔥</span> Streak: <strong id="drill-streak-count">0</strong></div>
+                    <div>✓ <span class="counter-correct" id="drill-correct">0</span> | ✗ <span class="counter-wrong" id="drill-wrong">0</span></div>
+                    <button class="btn-primary" style="padding:8px 16px;font-size:0.82rem;" onclick="nextEsterDrill()">Next →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="quiz-container" data-quiz-id="carboxylic">
+        <h3>🎯 Quick Check — Acids &amp; Esters</h3>
+        <div class="quiz-questions" id="quiz-carboxylic"></div>
+        <div class="quiz-score" id="score-carboxylic"></div>
+    </div>
+</section>
+
+<!-- ══════════ POLYMERS ══════════ -->
+<section id="polymers" class="section content-section">
+    <div class="section-header">
+        <span class="section-number">06</span>
+        <h2>Polymers</h2>
+        <p class="section-lead">Large molecules built from repeating small units (monomers)</p>
+    </div>
+    <div class="content-grid">
+        <div class="content-card full-width">
+            <h3>➕ Addition Polymerisation</h3>
+            <p>Many alkene monomers join — C=C opens up → long chain with only C–C single bonds. <strong>No other product</strong>.</p>
+            <div class="reaction-box"><div class="reaction-equation">
+                <span class="reactant">n CH₂=CH₂</span>
+                <span class="arrow">→<br><small class="condition">high T &amp; P</small></span>
+                <span class="product">–(CH₂–CH₂)–<sub>n</sub></span>
+            </div><p class="reaction-note">Ethene → Poly(ethene) — plastic bags, cling film.</p></div>
+            <div class="polymer-animation">
+                <button class="btn-primary" id="btn-poly-anim" onclick="animatePolymerisation()">▶ Animate Polymerisation</button>
+                <div class="poly-visual" id="poly-visual"></div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3>💧 Condensation Polymerisation</h3>
+            <p>Two different monomers join, releasing <strong>water</strong> each time.</p>
+            <h4>Nylon (polyamide)</h4>
+            <p>Dicarboxylic acid + diamine → <strong>–CONH–</strong> amide link. Uses: clothing, parachutes, fishing line.</p>
+            <h4>Terylene (polyester)</h4>
+            <p>Dicarboxylic acid + diol → <strong>–COO–</strong> ester link. Uses: clothing, curtains, sleeping bags.</p>
+        </div>
+
+        <div class="content-card">
+            <h3>📋 Addition vs Condensation</h3>
+            <div class="table-responsive"><table class="styled-table compact"><thead><tr><th>Feature</th><th>Addition</th><th>Condensation</th></tr></thead><tbody>
+                <tr><td>Monomer</td><td>One type (alkene)</td><td>Two types</td></tr>
+                <tr><td>Key feature</td><td>C=C opens</td><td>Two functional groups react</td></tr>
+                <tr><td>Small molecule lost?</td><td>No</td><td>Yes (H₂O)</td></tr>
+                <tr><td>Example</td><td>Poly(ethene)</td><td>Nylon / Terylene</td></tr>
+                <tr><td>Link type</td><td>C–C</td><td>Amide / Ester</td></tr>
+            </tbody></table></div>
+        </div>
+
+        <div class="content-card full-width">
+            <h3>🔀 Monomer ↔ Polymer</h3>
+            <p>Click a monomer to see its polymer:</p>
+            <div class="reaction-selector" id="mono-poly-selector">
+                <button class="rxn-btn active" data-mp="ethene">Ethene</button>
+                <button class="rxn-btn" data-mp="propene">Propene</button>
+                <button class="rxn-btn" data-mp="chloroethene">Chloroethene</button>
+                <button class="rxn-btn" data-mp="tetrafluoroethene">Tetrafluoroethene</button>
+            </div>
+            <div class="mono-poly-display" id="mono-poly-display">
+                <div class="mp-monomer" id="mp-monomer"></div>
+                <div class="mp-arrow">→ polymerisation →</div>
+                <div class="mp-polymer" id="mp-polymer"></div>
+            </div>
+        </div>
+
+        <div class="content-card full-width">
+            <h3>🌍 Environmental Issues &amp; Recycling</h3>
+            <div class="env-grid">
+                <div class="env-card problem">
+                    <h4>⚠️ Problems</h4>
+                    <ul>
+                        <li>Most plastics are <strong>non-biodegradable</strong></li>
+                        <li>Landfill waste — hundreds of years to break down</li>
+                        <li>Burning releases <strong>toxic gases</strong></li>
+                        <li>Harms marine wildlife</li>
+                    </ul>
+                </div>
+                <div class="env-card solution">
+                    <h4>♻️ Recycling</h4>
+                    <ul>
+                        <li><strong>Physical:</strong> melt poly(ethene) → pellets → remoulded</li>
+                        <li><strong>Chemical:</strong> depolymerisation (hydrolysis of polyester with acid → monomers) or cracking waste into fuel</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="key-point"><span class="key-icon">💡</span><p><strong>Depolymerisation</strong> = breaking polymers back into monomers. E.g. polyester + H₂O (acid catalyst) → dicarboxylic acid + diol.</p></div>
+        </div>
+    </div>
+    <div class="quiz-container" data-quiz-id="polymers">
+        <h3>🎯 Quick Check — Polymers</h3>
+        <div class="quiz-questions" id="quiz-polymers"></div>
+        <div class="quiz-score" id="score-polymers"></div>
+    </div>
+</section>
+
+<!-- ══════════ REACTION MAP & SUMMARY ══════════ -->
+<section id="reaction-map" class="section content-section">
+    <div class="section-header">
+        <span class="section-number">07</span>
+        <h2>Reaction Map &amp; Summary</h2>
+        <p class="section-lead">How all organic compounds connect through reactions</p>
+    </div>
+    <div class="content-grid">
+
+        <!-- Conversion Chain -->
+        <div class="content-card full-width">
+            <h3>🔗 Organic Conversion Chain</h3>
+            <p>Click any arrow to see the full reaction.</p>
+            <div class="conversion-chain" id="conversion-chain"></div>
+            <div id="chain-detail-area"></div>
+        </div>
+
+        <!-- Homologous Series Side by Side -->
+        <div class="content-card full-width">
+            <h3>📊 Homologous Series — Side by Side</h3>
+            <div class="series-comparison">
+                <div class="series-col alkane-col"><div class="series-col-header">🛢️ Alkanes</div><div class="series-col-body" id="series-alkanes"></div></div>
+                <div class="series-col alkene-col"><div class="series-col-header">⚡ Alkenes</div><div class="series-col-body" id="series-alkenes"></div></div>
+                <div class="series-col alcohol-col"><div class="series-col-header">🧪 Alcohols</div><div class="series-col-body" id="series-alcohols"></div></div>
+                <div class="series-col acid-col"><div class="series-col-header">🍋 Carboxylic Acids</div><div class="series-col-body" id="series-acids"></div></div>
+            </div>
+        </div>
+
+        <!-- Quick Reference Table -->
+        <div class="content-card full-width">
+            <h3>📝 Quick Reference — All Reactions</h3>
+            <div class="table-responsive"><table class="styled-table"><thead><tr><th>Reaction</th><th>Type</th><th>Conditions</th><th>Products</th></tr></thead><tbody>
+                <tr><td>Alkane + O₂</td><td>Combustion</td><td>Ignite</td><td>CO₂ + H₂O</td></tr>
+                <tr><td>Alkane + Cl₂</td><td>Substitution</td><td>UV light</td><td>Chloroalkane + HCl</td></tr>
+                <tr><td>Alkene + Br₂(aq)</td><td>Addition</td><td>Room temp</td><td>Dibromoalkane</td></tr>
+                <tr><td>Alkene + H₂O</td><td>Addition</td><td>Catalyst, high T/P</td><td>Alcohol</td></tr>
+                <tr><td>Alkene + H₂</td><td>Addition</td><td>Ni catalyst</td><td>Alkane</td></tr>
+                <tr><td>n Alkene</td><td>Addition polym.</td><td>High T/P</td><td>Poly(alkene)</td></tr>
+                <tr><td>Cracking</td><td>Decomposition</td><td>High temp</td><td>Smaller alkene + alkane</td></tr>
+                <tr><td>Glucose</td><td>Fermentation</td><td>Yeast, ~37°C</td><td>Ethanol + CO₂</td></tr>
+                <tr><td>Alcohol + O₂</td><td>Combustion</td><td>Ignite</td><td>CO₂ + H₂O</td></tr>
+                <tr><td>Alcohol → Acid</td><td>Oxidation</td><td>KMnO₄ / air</td><td>Carboxylic acid</td></tr>
+                <tr><td>Acid + Alcohol</td><td>Esterification</td><td>H⁺ catalyst</td><td>Ester + H₂O</td></tr>
+                <tr><td>Acid + Metal</td><td>Acid reaction</td><td>—</td><td>Salt + H₂</td></tr>
+                <tr><td>Acid + Carbonate</td><td>Acid reaction</td><td>—</td><td>Salt + H₂O + CO₂</td></tr>
+            </tbody></table></div>
+        </div>
+
+        <!-- Flowchart Challenge -->
+        <div class="content-card full-width">
+            <h3>🔄 Flowchart Challenge</h3>
+            <p>Fill in the blanks! Click any <span style="color:var(--accent-orange);font-weight:600;">?</span> box to choose the correct substance or product.</p>
+            <div class="flowchart-nav" id="fc-nav"></div>
+            <div class="flowchart-title" id="fc-title"></div>
+            <div class="flowchart-stage" id="fc-stage"></div>
+            <div class="flowchart-feedback" id="fc-feedback"></div>
+            <div class="flowchart-score-bar">
+                <span id="fc-progress">0 / 0 filled</span>
+                <button class="btn-primary" style="padding:8px 16px;font-size:0.82rem;" onclick="resetFlowchart()">Reset 🔄</button>
+            </div>
+        </div>
+
+        <!-- Guess the Substance -->
+        <div class="content-card full-width">
+            <h3>🔍 Guess the Substance</h3>
+            <p>Clues are revealed one at a time. Fewer clues = higher score!</p>
+            <div class="guess-nav" id="guess-nav"></div>
+            <div class="guess-container" id="guess-container">
+                <div class="guess-clue-area">
+                    <div class="guess-clue-header">
+                        <span class="guess-icon">🧩</span>
+                        <span>Clues: <strong id="guess-clue-count">0</strong> / <span id="guess-clue-total">5</span></span>
+                    </div>
+                    <div class="guess-clues" id="guess-clues"></div>
+                    <button class="btn-primary guess-reveal-btn" id="guess-reveal-btn" onclick="revealNextClue()">Reveal First Clue 💡</button>
+                </div>
+                <div class="guess-answer-area">
+                    <p class="guess-prompt">What is the substance?</p>
+                    <div class="guess-options" id="guess-options"></div>
+                    <div class="guess-result" id="guess-result"></div>
+                </div>
+            </div>
+            <div class="guess-scoreboard">🏆 Total Score: <strong id="guess-total-score">0</strong> <span style="font-size:0.78rem;color:var(--text-muted);">(max 4 pts each)</span></div>
+        </div>
+
+        <!-- Final Challenge Quiz -->
+        <div class="content-card full-width">
+            <h3>🏆 Challenge: Mixed Quiz</h3>
+            <p>Test your understanding across all topics!</p>
+            <button class="btn-primary" id="start-final-quiz" onclick="startFinalQuiz()">Start Challenge Quiz (10 Questions) →</button>
+            <div id="final-quiz-area" style="display:none;">
+                <div id="final-quiz-questions"></div>
+                <div class="quiz-score" id="final-quiz-score"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <p>O Level Chemistry 6092 — Organic Chemistry Interactive Learning</p>
+    <p>Content aligned with Singapore-Cambridge GCE O Level Chemistry (2026 syllabus).</p>
+</footer>
+
+<button class="scroll-top" id="scrollTopBtn" onclick="scrollToSection('home')" title="Back to top">↑</button>
+
+<script src="script.js"></script>
+</body>
+</html>
